@@ -2,26 +2,126 @@
 <html lang="en">
   <head>
     <meta name="author" content="Shrijit Singh">
-
+    <meta name="viewport" content="width=device-width">
     <script defer src="https://use.fontawesome.com/releases/v5.0.2/js/all.js"></script>
 
     <link rel="stylesheet" type="text/css" href="style.css">
   </head>
-  <body>
+  <body onresize="onResize()">
     <div class="nav">
       <ul>
-        <li><a href="#" style="padding-left: 24px; padding-right: 0px; color: rgba(0, 0, 0, 0.6);"><i class="fas fa-bars fa-lg"></i></a></li>
-        <li><a href="#" style="font-size: 24px;"><b>Google</b> Keep</a></li>
-        <li><input type="text" placeholder="Search" style="height:42px; line-height: 40px; width: 600px;"></input></li>
+        <div class="nav-left">
+          <li id="menu-icon"><a href="#" onclick="showSideNav()"style="padding-left: 24px; padding-right: 0px; color: rgba(0, 0, 0, 0.6);"><i class="fas fa-bars fa-lg"></i></a></li>
+          <li id="logo" style="margin-left: 24px;"><a href="#" style="font-size: 22px;"><b id="google">Google</b> Keep</a></li>
+          <li id="search"><input class="search" type="text" placeholder="Search" onblur="removeSearch()" onfocus="showSearch()"></input></li>
+          <li id="close-search"><a href="#"><i class="fas fa-times fa-lg"></i></a></li>
+        </div>
         <div class="nav-right">
+          <li id="search-icon"><a href="#" onclick="showSearch()"><i class="fas fa-search fa-lg"></i></a></li>
           <li><a href="#"><i class="fas fa-redo-alt fa-lg"></i></a></li>
-          <li><a href="#"><i class="fas fa-th fa-lg"></i></a></li>
           <li><a href="#"><i class="fas fa-bell fa-lg"></i></a></li>
           <li><a href="#"><i class="fas fa-user fa-lg"></i></a></li>
         </div>
       </ul>
     </div>
     <div class="container">
+      <div class="side-nav">
+        <ul>
+          <li><a href="#" style="font-size: 22px; padding-left: 0px;"><b>Google</b> Keep</a></li>
+          <li><i class="fas fa-sticky-note fa-1x"></i><a href="#" >Notes</a></li>
+          <li><i class="fas fa-bell fa-1x"></i><a href="#">Reminders</a></li>
+        </ul>
+      </div>
+      <div class="cards-container">
+        <div class="card">
+          <a href="#"><i class="fas fa-check fa-lg" style="color: black; background-color: white; border-radius: 10px; box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.2), 0 1px 5px 0 rgba(0,0,0,0.12); position: relative; top: -16px; left: -16px;" data-fa-transform="shrink-7"></i></a>
+          <p>This is an example note.This is an example note.This is an example note.This is an example note.This is an example note.This is an example note.This is an example note.This is an example note.</p>
+          <div class="card-edit">
+            <a href="#"><i class="fas fa-bell fa-1x" style="color: rgba(0, 0, 0, 0.6);" data-fa-transform="shrink-2"></i></a>
+            <a href="#"><i class="fas fa-image fa-1x" style="color: rgba(0, 0, 0, 0.6);" data-fa-transform="shrink-2"></i></a>
+            <a href="#"><i class="fas fa-ellipsis-v fa-1x" style="color: rgba(0, 0, 0, 0.6);" data-fa-transform="shrink-2"></i></a>
+          </div>
+        </div>
+        <div class="card">
+          <a href="#"><i class="fas fa-check fa-lg" style="color: black; background-color: white; border-radius: 10px; box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.2), 0 1px 5px 0 rgba(0,0,0,0.12); position: relative; top: -16px; left: -16px;" data-fa-transform="shrink-7"></i></a>
+          <p>Task List</p>
+          <div class="card-edit">
+            <a href="#"><i class="fas fa-bell fa-1x" style="color: rgba(0, 0, 0, 0.6);" data-fa-transform="shrink-2"></i></a>
+            <a href="#"><i class="fas fa-image fa-1x" style="color: rgba(0, 0, 0, 0.6);" data-fa-transform="shrink-2"></i></a>
+            <a href="#"><i class="fas fa-ellipsis-v fa-1x" style="color: rgba(0, 0, 0, 0.6);" data-fa-transform="shrink-2"></i></a>
+          </div>
+        </div>
+      </div>
     </div>
+    <script>
+    var isMobile = 0
+    onResize();
+    function onResize(){
+    if(window.innerWidth <= 767){
+      isMobile = 1;
+    }
+    else{
+      isMobile = 0;
+    }
+}
+    function showSearch(){
+      if(isMobile == 1){
+      document.getElementsByClassName('nav-right')[0].style.display = "none"
+      document.getElementById('menu-icon').style.display = "none"
+      document.getElementById('logo').style.display = "none"
+      document.getElementById('search-icon').style.display = "none"
+      document.getElementById('search').style.display = "inline-block"
+      document.getElementById('search').style.width = "90%"
+      document.getElementById('search').style.position = "relative"
+      document.getElementById('search').style.left = "50%"
+      document.getElementById('search').style.marginLeft = "-45%"
+
+      document.getElementsByClassName('search')[0].style.margin = "0px"
+      document.getElementsByClassName('search')[0].style.padding = "0px"
+      document.getElementsByClassName('search')[0].style.paddingLeft = "20px"
+      document.getElementsByClassName('search')[0].style.marginLeft = "-12px"
+      document.getElementsByClassName('search')[0].style.width = "100%"
+      document.getElementsByClassName('search')[0].focus()
+      document.getElementById('close-search').style.position = "absolute";
+      document.getElementById('close-search').style.display = "inline-block"
+      document.getElementById('close-search').style.right = "20px"
+    }
+    else{
+      document.getElementById('close-search').style.display = "inline-block"
+    }
+    }
+    function showSideNav(){
+      document.getElementsByClassName('side-nav')[0].style.display = "block"
+    }
+    function removeSearch(){
+      if (isMobile == 1){
+        document.getElementsByClassName('nav-right')[0].style.display = "inline-block"
+        document.getElementById('menu-icon').style.display = "inline-block"
+        document.getElementById('logo').style.display = "inline-block"
+        document.getElementById('search-icon').removeAttribute('style')
+        document.getElementById('search').removeAttribute('style')
+        // document.getElementById('search').style.width = "initial"
+        // document.getElementById('search').style.position = "initial"
+        // document.getElementById('search').style.left = "initial"
+        // document.getElementById('search').style.marginLeft = "initial"
+        // document.getElementsByClassName('search')[0].removeAttribute('style')
+        // document.getElementsByClassName('search')[0].style.margin = "initial"
+        // document.getElementsByClassName('search')[0].style.padding = "initial"
+        // document.getElementsByClassName('search')[0].style.paddingLeft = "initial"
+        // document.getElementsByClassName('search')[0].style.marginLeft = "initial"
+        // document.getElementsByClassName('search')[0].style.width = "initial"
+        // document.getElementsByClassName('search')[0].blur()
+        document.getElementsByClassName('search')[0].removeAttribute('style')
+        document.getElementById('close-search').removeAttribute('style')
+        // document.getElementById('close-search').style.position = "initial";
+        // document.getElementById('close-search').style.display = "none"
+        // document.getElementById('close-search').style.right = "initial"
+      }
+      else{
+        document.getElementById('close-search').style.display = "none"
+      }
+    }
+
+    </script>
   </body>
 </html>

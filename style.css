@@ -177,6 +177,9 @@ html, body{
   #logo{
     margin-left: 0px;
   }
+  .card{
+    margin-bottom: 20px;
+  }
 }
 
 

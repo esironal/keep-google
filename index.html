@@ -34,16 +34,16 @@
       </div>
       <div class="cards-container">
         <div class="card">
-          <a href="#"><i class="fas fa-check fa-lg" style="color: black; background-color: white; border-radius: 10px; box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.2), 0 1px 5px 0 rgba(0,0,0,0.12); position: relative; top: -16px; left: -16px;" data-fa-transform="shrink-7"></i></a>
+          <a href="#"><i class="fas fa-check fa-lg card-done" data-fa-transform="shrink-7"></i></a>
           <p>This is an example note.This is an example note.This is an example note.This is an example note.This is an example note.This is an example note.This is an example note.This is an example note.</p>
-          <div class="card-edit">
+          <div id="card-edit "class="card-edit">
             <a href="#"><i class="fas fa-bell fa-1x" style="color: rgba(0, 0, 0, 0.6);" data-fa-transform="shrink-2"></i></a>
             <a href="#"><i class="fas fa-image fa-1x" style="color: rgba(0, 0, 0, 0.6);" data-fa-transform="shrink-2"></i></a>
             <a href="#"><i class="fas fa-ellipsis-v fa-1x" style="color: rgba(0, 0, 0, 0.6);" data-fa-transform="shrink-2"></i></a>
           </div>
         </div>
         <div class="card">
-          <a href="#"><i class="fas fa-check fa-lg" style="color: black; background-color: white; border-radius: 10px; box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.2), 0 1px 5px 0 rgba(0,0,0,0.12); position: relative; top: -16px; left: -16px;" data-fa-transform="shrink-7"></i></a>
+          <a href="#"><i class="fas fa-check fa-lg card-done" data-fa-transform="shrink-7"></i></a>
           <p>Task List</p>
           <div class="card-edit">
             <a href="#"><i class="fas fa-bell fa-1x" style="color: rgba(0, 0, 0, 0.6);" data-fa-transform="shrink-2"></i></a>
@@ -54,6 +54,22 @@
       </div>
     </div>
     <script>
+    var cards = document.getElementsByClassName('card')
+    for (i = 0; i < cards.length; ++i ){
+  (function (i) {
+    cards[i].addEventListener("mouseover", function(event){
+
+      document.getElementsByClassName("card-edit")[i].style.visibility = "visible"
+      document.getElementsByClassName("card-done")[i].style.visibility = "visible"
+    });
+      cards[i].addEventListener("mouseout", function(){
+        document.getElementsByClassName("card-edit")[i].style.visibility = "hidden"
+        document.getElementsByClassName("card-done")[i].style.visibility = "hidden"
+    });
+  })(i);
+
+
+  }
     document.getElementsByClassName('container')[0].addEventListener("click", function(){
     document.getElementsByClassName("side-nav")[0].style.display = "none"
 });
@@ -107,22 +123,8 @@
         document.getElementById('logo').style.display = "inline-block"
         document.getElementById('search-icon').removeAttribute('style')
         document.getElementById('search').removeAttribute('style')
-        // document.getElementById('search').style.width = "initial"
-        // document.getElementById('search').style.position = "initial"
-        // document.getElementById('search').style.left = "initial"
-        // document.getElementById('search').style.marginLeft = "initial"
-        // document.getElementsByClassName('search')[0].removeAttribute('style')
-        // document.getElementsByClassName('search')[0].style.margin = "initial"
-        // document.getElementsByClassName('search')[0].style.padding = "initial"
-        // document.getElementsByClassName('search')[0].style.paddingLeft = "initial"
-        // document.getElementsByClassName('search')[0].style.marginLeft = "initial"
-        // document.getElementsByClassName('search')[0].style.width = "initial"
-        // document.getElementsByClassName('search')[0].blur()
         document.getElementsByClassName('search')[0].removeAttribute('style')
         document.getElementById('close-search').removeAttribute('style')
-        // document.getElementById('close-search').style.position = "initial";
-        // document.getElementById('close-search').style.display = "none"
-        // document.getElementById('close-search').style.right = "initial"
       }
       else{
         document.getElementById('close-search').style.display = "none"

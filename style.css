@@ -70,19 +70,30 @@ html, body{
 }
 .card{
   background-color: #fff;
-  padding: 10px;
+  padding: 0 10px 0 10px;
   margin-bottom: 40px;
   box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.2), 0 1px 5px 0 rgba(0,0,0,0.12);
 }
-p{
-  margin: 0;
+.card p{
+  margin: -5px 0;
 }
 .card-edit{
   width: 100%;
-  margin-top: 40px;
+  margin-top: 30px;
+  padding-bottom: 10px;
+  visibility: hidden;
 }
 .card-edit a > svg{
   padding-right: 20px;
+}
+.card-done{
+  color: black; background-color: white;
+  border-radius: 20px;
+  box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.2), 0 1px 5px 0 rgba(0,0,0,0.12);
+  position: relative;
+  top: -9px; left: -18px;
+  color: rgba(0, 0, 0, 0.6);
+  visibility: hidden;
 }
 .search{
   /*margin-left: 25px;
@@ -122,6 +133,7 @@ p{
   display: none;
   color: rgba(0, 0, 0, 0.6);
 }
+
 
 @media only screen and (min-width: 768px) {
   #search{
